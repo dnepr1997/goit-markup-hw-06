@@ -16,6 +16,8 @@ ul {
 }
 img {
     display: block;
+    max-width: 100%;
+    height: auto;
 }
 h1,
 h2,
@@ -29,8 +31,8 @@ p {
 .container {
     min-width: 320px;
     max-width: 428px;
-    outline: 2px solid red;
-    outline-offset: -2px;
+    /* outline: 2px solid red;
+    outline-offset: -2px; */
     margin: 0 auto;
     padding: 0 16px;
 
@@ -78,6 +80,12 @@ p {
     gap: 40px;
     margin: 0;
 }
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .header-list {
+    display: none;
+  }
+}
+
 .header-list .link {
     padding: 24px 0;
 }
@@ -150,12 +158,22 @@ header {
 address {
     font-style: normal;
 }
-.address-list {
+@media only screen and (min-width: 1158px) {
+  .address-list {
     display: flex;
     margin-right: 0;
     gap: 40px;
     margin: 0;
+    
+  }
 }
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .address-list {
+    display: none;
+  }
+}
+
+
 .address-link {
     list-style: none;
     line-height: 1.5;
@@ -189,17 +207,68 @@ address {
     max-width: 1440px;
     margin: 0 auto;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/people-office.jpg);
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/bg.mobil@1x.jpg);
 }
+@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    .section-title {
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/bg.mobil@2x.jpg);
+    }
+}
+@media only screen and (min-width: 429px) {
+  .section-title {
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/bg.tablet@1x.jpg);
+  }
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+      .section-title {
+          background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/bg.tablet@2x.jpg);
+      }
+  }
+}
+@media only screen and (min-width: 769px) {
+  .section-title {
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/bg.desc@1x.jpg);
+  }
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+      .section-title {
+          background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/background/bg.desc@2x.jpg);
+      }
+  }
+}
+ 
+
 .section-title .title {
-    font-size: 56px;
-    line-height: 1.07;
-    text-align: center;
-    letter-spacing: 0.02em;
     color: #ffffff;
-    max-width: 496px;
-    margin: 0 auto 48px auto;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.72px;
+    text-transform: capitalize;
+    margin: 0 auto 72px auto;
 }
+
+
+@media only screen and (min-width: 768px) {
+.section-title .title {
+    margin: 0 auto 36px auto;
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    max-width: 496px;
+    
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .section-title .title {
+    margin: 0 auto 48px auto;
+  }
+}
+
 .order-service {
     background-color: #4D5AE5;
     font-family: "Roboto", sans-serif;
@@ -1171,3 +1240,79 @@ address {
     opacity: 1;
 }
 
+
+/**
+  |============================
+  | mobile menu
+  |============================
+*/
+
+.menu-toggle {
+    min-height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-toggle-icon {
+    stroke: #2E2F42
+}
+
+.menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 32px;
+    background-color: #3f51b5;
+    z-index: 999;
+
+    transform: translateX(100%);
+    transition: transform 250ms ease-in-out;
+}
+
+.menu-container.is-open {
+    transform: translateX(0);
+}
+
+.menu-container .menu-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #fff;
+}
+
+.mobile-menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.mobile-menu .link {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
